@@ -97,12 +97,6 @@ jobs:
       - uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c  # v6.4.0
         with:
           go-version: stable
-      - name: configure GOPATH (Makefile resolves GOBIN as $(GOPATH)/bin)
-        run: |
-          GOPATH="$(go env GOPATH)"
-          mkdir -p "$GOPATH/bin"
-          echo "GOPATH=$GOPATH" >> "$GITHUB_ENV"
-          echo "$GOPATH/bin" >> "$GITHUB_PATH"
       - name: brew install gpgme (CGo dep for github.com/proglottis/gpgme)
         run: brew install gpgme
       - run: make tools
